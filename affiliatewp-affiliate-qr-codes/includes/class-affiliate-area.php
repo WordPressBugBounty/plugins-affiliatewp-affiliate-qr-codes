@@ -30,29 +30,47 @@ class Affiliate_Area {
 	 * Outputs a QR code matching the (static) affiliate URL in the Affiliate Area.
 	 *
 	 * @since 1.0.0
+	 * @since 1.0.4 UI updated to match our current UI.
 	 *
 	 * @param int $affiliate_id Current affiliate ID.
 	 */
 	public function render_qr_code( $affiliate_id ) {
+
 		$generator = affiliatewp_affiliate_qr_codes()->generator;
 
 		$image_url = $generator->get_code_for_affiliate( $affiliate_id );
 
 		// Set margin=1 for the QR code link.
-		$image_url_href = add_query_arg( array( 'margin' => 1 ), $image_url );
+		$image_url_href = add_query_arg( [ 'margin' => 1 ], $image_url );
 
 		// Set margin=0 for the QR code display.
-		$image_url_src = add_query_arg( array( 'margin' => 0 ), $image_url );
+		$image_url_src = add_query_arg( [ 'margin' => 0 ], $image_url );
 
 		$image   = $generator->build_image_html( $image_url_src );
 		$qr_code = sprintf( '<a href="%1$s" target="_new">%2$s</a>', esc_url( $image_url_href ), $image );
 
-		$output  = '<div style="margin-bottom: 10px;">';
-		$output .= '<p class="description">' . _x( 'Click the image below to save, print, or share your referral URL as a QR code.', 'affiliate area', 'affiliatewp-affiliate-qr-codes' ) . '</p>';
-		$output .= '<p>' . $qr_code . '</p>';
-		$output .= '</div>';
+		?>
 
-		echo $output;
+		<div class="affwp-card affwp-affiliate-link">
+			<div class="affwp-card__header affwp-affiliate-link__header">
+				<h3><?php esc_html_e( 'Your QR Code', 'affiliatewp-affiliate-qr-codes' ); ?></h3>
+			</div>
+			<div class="affwp-card__content">
+				<p class="description"><?php echo esc_html_x( 'Click the image below to save, print, or share your referral URL as a QR code.', 'affiliate area', 'affiliatewp-affiliate-qr-codes' ); ?></p>
+				<p>
+					<?php
+					echo wp_kses(
+						$qr_code,
+						array(
+							'a'   => array( 'href' => array(), 'target' => array() ),
+							'img' => array( 'src' => array(), 'width' => array(), 'height' => array(), 'alt' => array() ),
+						)
+					);
+					?>
+				</p>
+			</div>
+		</div>
+
+		<?php
 	}
-
 }

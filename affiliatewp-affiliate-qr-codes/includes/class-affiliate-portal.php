@@ -82,7 +82,7 @@ class Affiliate_Portal {
 							'src'    => $image_url_src,
 							'width'  => 120,
 							'height' => 120,
-							'alt'    => __( 'Referral URL QR code', 'affiliatewp-affiliate-portal' ),
+							'alt'    => __( 'Referral URL QR code', 'affiliatewp-affiliate-qr-codes' ),
 						),
 					) ),
 				),

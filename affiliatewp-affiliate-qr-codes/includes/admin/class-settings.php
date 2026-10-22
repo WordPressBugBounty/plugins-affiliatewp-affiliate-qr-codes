@@ -39,7 +39,7 @@ class Settings {
 	 * @return array Array of settings tabs.
 	 */
 	public function setting_tab( $tabs ) {
-		$tabs['affiliate_qr_codes'] = __( 'QR Codes', 'affiliatewp-affiliate-portal' );
+		$tabs['affiliate_qr_codes'] = __( 'QR Codes', 'affiliatewp-affiliate-qr-codes' );
 
 		return $tabs;
 	}
@@ -57,8 +57,8 @@ class Settings {
 		$settings['affiliate_qr_codes'] = array(
 
 			'qr_codes_enabled' => array(
-				'name' => __( 'Enable affiliate QR codes', 'affiliatewp-affiliate-portal' ),
-				'desc' => __( 'Check this box to globally enable affiliate QR codes.', 'affiliatewp-affiliate-portal' ),
+				'name' => __( 'Enable affiliate QR codes', 'affiliatewp-affiliate-qr-codes' ),
+				'desc' => __( 'Check this box to globally enable affiliate QR codes.', 'affiliatewp-affiliate-qr-codes' ),
 				'type' => 'checkbox',
 			),
 		);

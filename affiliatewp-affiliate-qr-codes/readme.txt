@@ -2,9 +2,9 @@
 Contributors:
 Tags: AffiliateWP
 Requires at least: 5.0
-Tested up to: 6.0
+Tested up to: 7.1
 Requires PHP: 5.6
-Stable tag: 1.0.3
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,14 @@ OR you can just install it with WordPress by going to Plugins >> Add New >> and 
 2. QR code in the Affiliate Portal.
 
 == Changelog ==
+
+= 1.0.5 =
+* Changed: Strengthened security across the plugin, including how QR code images are generated.
+
+= 1.0.4 =
+* Requires: AffiliateWP 2.27.6
+* Improved: Compatibility with PHP 8
+* Improved: Affiliate Area UI updated to match AffiliateWP 2.27.6 Affiliate Area
 
 = 1.0.3 =
 * Fixed: The QR image URL getter only works for the current affiliate

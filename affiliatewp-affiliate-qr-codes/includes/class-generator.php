@@ -62,7 +62,10 @@ class Generator {
 	public function build_image_html( $image_url, $size = 120 ) {
 		$size = absint( $size );
 
-		return sprintf( '<img src="%1$s" width="%2$d" height="%2$d" />', $image_url, $size );
+		// esc_url() in the src position strips a closing quote, blocks non-HTTP schemes and encodes &,
+		// so a crafted referral URL cannot break out of the attribute. This is the single sink every
+		// render path funnels through.
+		return sprintf( '<img src="%1$s" width="%2$d" height="%2$d" />', esc_url( $image_url ), $size );
 	}
 
 	/**

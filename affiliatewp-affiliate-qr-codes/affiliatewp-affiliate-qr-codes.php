@@ -1,12 +1,14 @@
-<?php
+<?php // phpcs:ignore -- Filename ok.
 /**
  * Plugin Name: AffiliateWP - Affiliate QR Codes
- * Plugin URI: https://affiliatewp.com/
+ * Plugin URI: https://affiliatewp.com/addons/affiliate-qr-codes/
  * Description: Allows affiliates to save, print, or share their affiliate URL as a QR code.
- * Author: Sandhills Development, LLC
- * Author URI: https://sandhillsdev.com
- * Version: 1.0.3
+ * Author: AffiliateWP
+ * Author URI: https://affiliatewp.com
+ * Version: 1.0.5
  * Text Domain: affiliatewp-affiliate-qr-codes
+ * License: GPL-2.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  *
  * AffiliateWP is distributed under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
@@ -21,7 +23,7 @@
  * along with AffiliateWP. If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -56,7 +58,7 @@ class AffiliateWP_AQRC_Requirements_Check extends AffiliateWP_Requirements_Check
 	protected $addon_requirements = array(
 		// AffiliateWP.
 		'affwp' => array(
-			'minimum' => '2.6.8',
+			'minimum' => '2.27.6',
 			'name'    => 'AffiliateWP',
 			'exists'  => true,
 			'current' => false,
@@ -158,7 +160,7 @@ class AffiliateWP_AQRC_Requirements_Check extends AffiliateWP_Requirements_Check
 	 * @return string Unmet requirements URL.
 	 */
 	protected function unmet_requirements_url() {
-		return 'https://docs.affiliatewp.com/article/2361-minimum-requirements-roadmaps';
+		return 'https://affiliatewp.com/docs/minimum-requirements-roadmap/';
 	}
 
 }

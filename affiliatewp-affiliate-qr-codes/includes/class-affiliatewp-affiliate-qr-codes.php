@@ -11,6 +11,11 @@
 
 use AffiliateWP_Affiliate_QR_Codes as Base;
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'AffiliateWP_Affiliate_QR_Codes' ) ) {
 
 	/**
@@ -47,9 +52,11 @@ if ( ! class_exists( 'AffiliateWP_Affiliate_QR_Codes' ) ) {
 		 * The version number.
 		 *
 		 * @since 1.0.0
+		 * @since 1.0.4 This is now automatically set in the `self::instance()` based on the plugin
+		 *              header.
 		 * @var    string
 		 */
-		private $version = '1.0.3';
+		private $version = '0.0.0';
 
 		/**
 		 * Admin settings component.
@@ -104,6 +111,8 @@ if ( ! class_exists( 'AffiliateWP_Affiliate_QR_Codes' ) ) {
 			// Setup the singleton.
 			self::setup_instance( $file );
 
+			self::$instance->version = get_plugin_data( self::$instance->file, false, false )['Version'] ?? '';
+
 			self::$instance->setup_constants();
 			self::$instance->includes();
 			self::$instance->hooks();
@@ -152,9 +161,9 @@ if ( ! class_exists( 'AffiliateWP_Affiliate_QR_Codes' ) ) {
 		 *
 		 * @return void
 		 */
-		protected function __clone() {
+		public function __clone() {
 			// Cloning instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh? This object cannot be cloned.', 'affiliatewp-affiliate-qr-codes' ), '1.0.0' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin’ huh? This object cannot be cloned.', 'affiliatewp-affiliate-qr-codes' ), '1.0.0' );
 		}
 
 		/**
@@ -164,9 +173,9 @@ if ( ! class_exists( 'AffiliateWP_Affiliate_QR_Codes' ) ) {
 		 *
 		 * @return void
 		 */
-		protected function __wakeup() {
+		public function __wakeup() {
 			// Unserializing instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh? This class cannot be unserialized.', 'affiliatewp-affiliate-qr-codes' ), '1.0.0' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin’ huh? This class cannot be unserialized.', 'affiliatewp-affiliate-qr-codes' ), '1.0.0' );
 		}
 
 		/**
@@ -174,7 +183,7 @@ if ( ! class_exists( 'AffiliateWP_Affiliate_QR_Codes' ) ) {
 		 *
 		 * @since 1.0.0
 		 */
-		private function __construct() {
+		public function __construct() {
 			self::$instance = $this;
 		}
 
